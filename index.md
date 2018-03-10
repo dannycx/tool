@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## 显示意图激活与隐式意图激活
 
 You can use the [editor on GitHub](https://github.com/dcxing111/dcxing111.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
