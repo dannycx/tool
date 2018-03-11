@@ -12,14 +12,17 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 -方式一：
 -Intent intent = new Intent(context,Target.class);
 -startXxx(intent);
+
 -方式二：
 -Intent intent = new Intent();
 -intent.setClass(context,Target.class);
 -startXxx(intent);
---方式三：
+
+-方式三：
 -Intent intent = new Intent();
 -intent.setClassName(context,"com.xxx.Target");
 -startXxx(intent);
+
 -方式四：
 -Intent intent = new Intent();
 -intent.setComponent(new ComponentName(context,Target.class));
