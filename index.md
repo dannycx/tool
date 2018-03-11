@@ -4,31 +4,29 @@ You can use the [editor on GitHub](https://github.com/dcxing111/dcxing111.github
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown  Intent意图
+###   Intent意图
 作用：激活组件
-显示意图激活：
-方式一：
-Intent intent = new Intent(context,Target.class);
-startXxx(intent);
-方式二：
-Intent intent = new Intent();
-intent.setClass(context,Target.class);
-startXxx(intent);
-方式三：
-Intent intent = new Intent();
-intent.setClassName(context,"com.xxx.Target");
-startXxx(intent);
-方式四：
-Intent intent = new Intent();
-intent.setComponent(new ComponentName(context,Target.class));
-startXxx(intent);
-
-隐式意图激活：
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
-Syntax highlighted code block
+-显示意图激活：
+-方式一：
+-Intent intent = new Intent(context,Target.class);
+-startXxx(intent);
+-方式二：
+-Intent intent = new Intent();
+-intent.setClass(context,Target.class);
+-startXxx(intent);
+--方式三：
+-Intent intent = new Intent();
+-intent.setClassName(context,"com.xxx.Target");
+-startXxx(intent);
+-方式四：
+-Intent intent = new Intent();
+-intent.setComponent(new ComponentName(context,Target.class));
+-startXxx(intent);
 
+
+隐式意图激活：
 # Header 1
 ## Header 2
 ### Header 3
