@@ -49,7 +49,7 @@
 -    android:name="com.xxx.TargetActivity">  
 -    <intent-filter>  
 -        <action android:name="com.xxx.xxx"/>  
---        <category android:name="android.intent.category.DEFAULT"/>  
+-        <category android:name="android.intent.category.DEFAULT"/>  
 -    </intent-filter>  
 -</activity>  
 
@@ -58,7 +58,7 @@
 -下面两种方式分别通过setAction和构造方法方法设置Action，两种方式效果相同。
 -方式一：setAction方法
 -Intent intent = new Intent();  
--intent.setAction("abcdefg");  
+-intent.setAction("com.xxx.xxx");  
 -startActivity(intent);  
 
 -方式二：构造方法直接设置Action
@@ -70,51 +70,51 @@
  
 **有几点需要注意** 
 - 这个Activity其他应用程序也可以调用，只要使用这个Action字符串。这样应用程序之间交互就很容易了，例如手机QQ可以调用QQ空间，可以调用腾讯微博等。 
-因为如此，为了防止应用程序之间互相影响，一般命名方式是包名+Action名，例如这里命名"abcdefg"就很不合理了，就应该改成"com.example.app016.MyTest"。
+-因为如此，为了防止应用程序之间互相影响，一般命名方式是包名+Action名，例如这里命名"abcdefg"就很不合理了，就应该改成"com.example.app016.MyTest"。
 - 当然，你可以在自己的程序中调用其他程序的Action。 例如可以在自己的应用程序中调用拨号面板：
-Intent intent = new Intent(Intent.ACTION_DIAL);  
-// 或者Intent intent = new Intent("android.intent.action.DIAL");  
-// Intent.ACTION_DIAL是内置常量，值为"android.intent.action.DIAL"  
-startActivity(intent);  
+-Intent intent = new Intent(Intent.ACTION_DIAL);  
+- 或者Intent intent = new Intent("android.intent.action.DIAL");  
+- Intent.ACTION_DIAL是内置常量，值为"android.intent.action.DIAL"  
+-startActivity(intent);  
   
-  3、一个Activity可以处理多种Action 只要你的应用程序够牛逼，一个Activity可以看网页，打电话，发短信，发邮件。。。当然可以。 Intent的Action只要是其中之一，就可以打开这个Activity。
+ -一个Activity可以处理多种Action 只要你的应用程序够牛逼，一个Activity可以看网页，打电话，发短信，发邮件。。。当然可以。 Intent的Action只要是其中之一，就可以打开这个Activity。
  
 
-activity  
-    android:name="com.example.app016.SecondActivity">  
-    <intent-filter>  
-        <!-- 可以处理下面三种Intent -->  
-        <action android:name="com.example.app016.SEND_EMAIL"/>  
-        <action android:name="com.example.app016.SEND_MESSAGE"/>  
-        <action android:name="com.example.app016.DAIL"/>  
-        <category android:name="android.intent.category.DEFAULT" />  
-    </intent-filter>  
-</activity>  
+-activity  
+ -   android:name="com.example.app016.SecondActivity">  
+ -   <intent-filter>  
+  -      <!-- 可以处理下面三种Intent -->  
+ -       <action android:name="com.example.app016.SEND_EMAIL"/>  
+  -      <action android:name="com.example.app016.SEND_MESSAGE"/>  
+   -     <action android:name="com.example.app016.DAIL"/>  
+   -     <category android:name="android.intent.category.DEFAULT" />  
+   - </intent-filter>  
+-</activity>  
 
 
-对于一个Action字符串，系统有可能会找到一个Activity能处理这个Action，也有可能找到多个Activity，也可能一个都找不到。
-1、找到一个Activity
-很简单，直接打开这个Activity。这个不需要解释。
-2、找到多个Acyivity
-系统会提示从多个activity中选择一个打开。
-例如我们自己开发一个拨号面板应用程序，可以设置activity的<intent-filter>中Action name为"android.intent.action.DIAL"，这样别的程序调用拨号器时，
-用户可以从Android自带的拨号器和我们自己开发的拨号器中选择。
+-对于一个Action字符串，系统有可能会找到一个Activity能处理这个Action，也有可能找到多个Activity，也可能一个都找不到。
+-1、找到一个Activity
+-很简单，直接打开这个Activity。这个不需要解释。
+-2、找到多个Acyivity
+-系统会提示从多个activity中选择一个打开。
+-例如我们自己开发一个拨号面板应用程序，可以设置activity的<intent-filter>中Action name为"android.intent.action.DIAL"，这样别的程序调用拨号器时，
+-用户可以从Android自带的拨号器和我们自己开发的拨号器中选择。
 
-<activity  
-    android:name="com.example.app016.SecondActivity">  
-    <intent-filter>  
-        <action android:name="android.intent.action.DIAL"/>  
-        <category android:name="android.intent.category.DEFAULT" />  
-    </intent-filter>  
-</activity>  
+-<activity  
+-    android:name="com.xxx.xxx">  
+-    <intent-filter>  
+-        <action android:name="android.intent.action.DIAL"/>  
+ -       <category android:name="android.intent.category.DEFAULT" />  
+ -   </intent-filter>  
+-</activity>  
 
 
 
-这也就是当Android手机装上UC浏览器后，打开网页时会弹出选择Android自带浏览器还是UC浏览器，可能都会遇到过。
-3、一个Activity都没找到
-一个都没找到的话，程序就会出错，会抛出ActivityNotFoundException。比如随便写一个action字符串：
-Intent intent = new Intent("asasasas");  
-startActivity(intent);  
+-这也就是当Android手机装上UC浏览器后，打开网页时会弹出选择Android自带浏览器还是UC浏览器，可能都会遇到过。
+-3、一个Activity都没找到
+-一个都没找到的话，程序就会出错，会抛出ActivityNotFoundException。比如随便写一个action字符串：
+-Intent intent = new Intent("asasasas");  
+-startActivity(intent);  
 
 
 
