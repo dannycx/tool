@@ -1,0 +1,6 @@
+# activity间传递数据
+
+##  Intent传递
+
+1.intent传递基本类型数据putXxxExtra(key,value);
+2.
