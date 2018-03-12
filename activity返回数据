@@ -1,0 +1,9 @@
+#activity返回数据
+
+-启动activity，startActivityForResult(),重写onActivityResult(),获取返回结果
+
+**需返回数据的activity将数据传回然后关闭**
+-Intent intent=new Intent(this,Src.class);
+-intent.putExtra(key,value);
+-setResult(intent);
+-finish();
