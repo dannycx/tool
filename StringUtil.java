@@ -1,6 +1,5 @@
 package com.danny.tool;
 
-
 import java.util.regex.Pattern;
 
 /**
@@ -15,7 +14,6 @@ public class StringUtil {
 	 * @param str
 	 * @return
 	 */
-
 	public static boolean isNumeric1(String str) {
 		for (int i = str.length(); --i >= 0;) {
 			if (!Character.isDigit(str.charAt(i))) {
@@ -66,7 +64,13 @@ public class StringUtil {
 			return false;
 		}
 	}
-
+	
+	/**
+	 * 判断一个字符串的首字符是否为字母
+	 * 
+	 * @param s
+	 * @return
+	 */
 	public static boolean check(String fstrData) {
 		char c = fstrData.charAt(0);
 		if (((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))) {
