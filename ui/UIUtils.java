@@ -12,7 +12,6 @@ import danny.com.sale.SaleApplication;
  * ui工具类,可获取上下文环境，全局Handler，主线程id，通过资源id获取资源，加载布局，尺寸转换，判断处理逻辑运行在主线程还是子线程
  * Created by danny on 2018/6/10.
  */
-
 public class UIUtils {
 
     //获取上下文
