@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
  * SharedPreference保存状态数据
  * Created by danny on 2018/5/7.
  */
-
 public class SpUtil {
     private static final String sName="config";
 
