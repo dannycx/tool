@@ -14,6 +14,7 @@ public class IOUtils {
 				io.close();
 			} catch (IOException e) {
 				Log.e(tag,e.getMessage());
+				return false;
 			}
 		}
 		return true;
