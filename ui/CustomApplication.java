@@ -7,7 +7,6 @@ import android.os.Handler;
 /**
  * Created by danny on 2018/6/10.
  */
-
 public class CustomApplication extends Application {
     private static Context mContext;
     private static Handler mHandler;
