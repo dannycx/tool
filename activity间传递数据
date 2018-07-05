@@ -1,8 +1,0 @@
-# activity间传递数据
-
-##  Intent传递
-
-1.intent传递基本类型数据putExtra(key,value);获取通过getXxxExtra(key)实现;
-2.intent通过Bundle（对HashMap封装，本身实现Parcelable序列化）传递数先将数据封装，putXxx(key,value);intent.putExtras(bundle);
-获取通过intent.getExtras()得到bundle对象，然后bundle.getXxx(key)得到参数;
-3.intent传递对象数据自定义类实现Parcelable，putExtra(key,object);取intent.getParcelableExtra(key);
