@@ -45,6 +45,7 @@ public class UIUtils {
 
     //获取系统认为最小滑动距离TouchSlop,当小于该值时,忽略滑动(8dp)
     public static int getTouchSlop(Context context){
+        //mSlop = ViewConfiguration.getWindowTouchSlop();
         return ViewConfiguration.get(context).getScaledTouchSlop();
     }
 
