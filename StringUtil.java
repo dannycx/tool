@@ -114,4 +114,18 @@ public class StringUtil {
 			return true;
 		}
 	}
+	
+    /**
+     * 获取字符高度
+     * 返回边界最小的矩形（由调用者分配）
+     *
+     * @param paint 当前画笔对象
+     * @param s 字符
+     * @return 高度
+     */
+    private int getAlphabetHeight(Paint paint, String s) {
+        Rect rect = new Rect();
+        paint.getTextBounds(s, 0, s.length(), rect);//设置后可在Rect中得到高度
+        return rect.height();
+    }
 }
