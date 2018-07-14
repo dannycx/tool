@@ -13,3 +13,6 @@
 
 [sp工具类](https://github.com/dannycx/tool/blob/master/SpUtil.java)
 - 提供不同类型数据存储到SharedPreference方法，获取方法，以及移除方法
+
+[字母表](https://github.com/dannycx/tool/blob/master/widget/qq/AlphabetView.java)
+- 类似QQ好友列表的字母检索，根据好友姓名首字母快速定位好友
