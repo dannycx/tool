@@ -115,17 +115,47 @@ public class StringUtil {
 		}
 	}
 	
-    /**
-     * 获取字符高度
-     * 返回边界最小的矩形（由调用者分配）
-     *
-     * @param paint 当前画笔对象
-     * @param s 字符
-     * @return 高度
-     */
-    private int getAlphabetHeight(Paint paint, String s) {
-        Rect rect = new Rect();
-        paint.getTextBounds(s, 0, s.length(), rect);//设置后可在Rect中得到高度
-        return rect.height();
-    }
+	/**
+	 * 获取字符高度
+	 * 返回边界最小的矩形（由调用者分配）
+	 *
+	 * @param paint 当前画笔对象
+	 * @param s 字符
+	 * @return 高度
+	 */
+	private int getAlphabetHeight(Paint paint, String s) {
+		Rect rect = new Rect();
+		paint.getTextBounds(s, 0, s.length(), rect);//设置后可在Rect中得到高度
+		return rect.height();
+	}
+	
+	/**
+	 * 判断两个字符串数据是否相等,字符串是否改变
+	 *
+	 * @param str1 字符串1
+	 * @param str2 字符串2
+	 * @return true:不相等		false:相等
+	 */
+	private static boolean haveContentsChanged(CharSequence str1, CharSequence str2) {
+		//判断字符是否为null,两个为null字符串使用 != 比较结果为false
+		if ((str1 == null) != (str2 == null)) {//进入这里说明有一个字符串为null
+			return true;
+		} else if (str1 == null) {//进入这里说明两字符串都为null
+			return false;
+		}
+
+		//长度比较
+		final int length = str1.length();
+		if (length != str2.length()) {
+			return true;
+		}
+
+		//循环遍历比较每个字符
+		for (int i = 0; i < length; i++) {
+			if (str1.charAt(i) != str2.charAt(i)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
