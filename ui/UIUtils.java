@@ -23,11 +23,6 @@ public class UIUtils {
     //获取主线程id
     public static int getUiThreadId(){return SaleApplication.getUiThreadId();}
 
-   
-
-
-    
-
     //判断是否运行在主线程
     public static boolean isRunningInUiThread(){
         //获取当前线程id
@@ -45,5 +40,17 @@ public class UIUtils {
         }else {//直接用Handler发消息让其运行在主线程
             getHandler().post(runnable);
         }
+    }
+    
+    /**
+     * 获取资源(例:获取drawable资源，name:drawable文件名称(shape_common),type(drawable))
+     * 
+     * @param context 上下文对象
+     * @param name 资源名称
+     * @param type 资源类型
+     * @return 资源
+     */
+    public static int resources(Context context, String name, String type){
+        return context.getResources().getIdentifier(name, type, context.getPackageName());
     }
 }
