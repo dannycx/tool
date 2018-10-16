@@ -78,20 +78,33 @@ public class ExpandTextView extends AppCompatTextView {
             initCloseEnd(getContext());
         }
 
-        boolean appendShow = false;// true     false
+        boolean appendShow = false;// true 不需要展开闭合    false 需要展开
         original = text.toString();
-        String work = new StringBuilder(original).toString();
 
-        int maxlines;
+        int maxlines = 0;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {// api大于16，可从资源中获取
             maxlines = getMaxLines();
         }else {
             maxlines = this.maxLine;
         }
-        Layout layout = createWorkingLayout(original);
+        String workText = new StringBuilder(original).toString();
 
-        if (layout != null) {
+        if (maxlines != -1) {
+            Layout layout = createWorkingLayout(original);
+            if (layout.getLineCount() > maxlines) {
+                workText = original.substring(0, getLineCount() - 1);
+                String showText = original.substring(0, getLineCount() - 1);
+                Layout layout2 = createWorkingLayout(showText);
+                if (layout2.getLineCount() > maxlines) {
+                    
+                }
+            }
 
+        }
+        
+        append(workText);
+        if (appendShow) {
+            
         }
     }
 
