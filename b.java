@@ -8,6 +8,7 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.StaticLayout;
+import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -78,7 +79,7 @@ public class ExpandTextView extends AppCompatTextView {
             initCloseEnd(getContext());
         }
 
-        boolean appendShow = false;// true 不需要展开闭合    false 需要展开
+        boolean appendShowAll = false;// true 不需要展开收起功能    false 需要展开收起功能
         original = text.toString();
 
         int maxlines = 0;
@@ -92,19 +93,26 @@ public class ExpandTextView extends AppCompatTextView {
         if (maxlines != -1) {
             Layout layout = createWorkingLayout(original);
             if (layout.getLineCount() > maxlines) {
-                workText = original.substring(0, getLineCount() - 1);
-                String showText = original.substring(0, getLineCount() - 1);
+                workText = original.substring(0, layout.getLineEnd(maxlines - 1)).trim();
+                String showText = original.substring(0, layout.getLineEnd(maxlines - 1)).trim() + "..." + TEXT_CLOSE;
                 Layout layout2 = createWorkingLayout(showText);
-                if (layout2.getLineCount() > maxlines) {
-                    
+                while (layout2.getLineCount() > maxlines) {
+                    int lastSpace = workText.length() - 1;
+                    if (lastSpace == -1) {
+                        break;
+                    }
+                    workText = workText.substring(0, lastSpace).trim();
+                    layout2 = createWorkingLayout(workText);
                 }
+                appendShowAll = true;
             }
 
         }
-        
-        append(workText);
-        if (appendShow) {
-            
+
+        setText(workText);
+        if (appendShowAll) {
+            append(spanClose);
+            setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
 
