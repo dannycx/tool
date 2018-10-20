@@ -142,15 +142,33 @@ public class ExpandTextView extends AppCompatTextView {
         Layout layout1 = createWorkingLayout(text);
         Layout layout2 = createWorkingLayout(text + "..." + TEXT_CLOSE);
         if (layout2.getLineCount() > layout1.getLineCount()) {
-            String exchngeText = text.substring(0,getLineCount()- 1 );
-            String txt = exchngeText + "..." + TEXT_CLOSE;
-            Layout layout = createWorkingLayout(txt);
-            
+            Layout layout = createWorkingLayout(text + "\n");
+            String exchangeTxt = text + "\n";
+            String newTxt = text + TEXT_CLOSE;
+            while (layout.getLineCount() == createWorkingLayout(newTxt).getLineCount()) {
+                exchangeTxt = exchangeTxt + " ";
+                newTxt = exchangeTxt + TEXT_CLOSE;
+            }
+            try {
+                setText(exchangeTxt.substring(0, exchangeTxt.length() - 3));
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
         }else {
             Layout layout = createWorkingLayout(text);
+            String exchangeTxt = text;
+            String newTxt = text + TEXT_CLOSE;
+            while (layout.getLineCount() == createWorkingLayout(newTxt).getLineCount()) {
+                exchangeTxt = exchangeTxt + " ";
+                newTxt = exchangeTxt + TEXT_CLOSE;
+            }
+            try {
+                setText(exchangeTxt.substring(0, exchangeTxt.length() - 3));
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-
-        setText(text);
+        
         append(spanExpand);
         setMovementMethod(LinkMovementMethod.getInstance());
     }
