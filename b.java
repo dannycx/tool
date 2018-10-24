@@ -59,7 +59,7 @@ public class ExpandTextView extends AppCompatTextView {
     }
 
     private void initExpandEnd(Context context) {
-        String content = TEXT_EXPAND;
+        String content = TEXT_CLOSE;
         spanExpand = new SpannableString(content);
         SpanBtn span = new SpanBtn(new OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class ExpandTextView extends AppCompatTextView {
     /**
      * 设置闭合文本
      */
-    private void setCloseText(String text) {
+    public void setCloseText(String text) {
         if (spanClose == null) {
             initCloseEnd(getContext());
         }
@@ -82,30 +82,30 @@ public class ExpandTextView extends AppCompatTextView {
         boolean appendShowAll = false;// true 不需要展开收起功能    false 需要展开收起功能
         original = text.toString();
 
-        int maxlines = 0;
+        int maxLines = 0;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {// api大于16，可从资源中获取
-            maxlines = getMaxLines();
+            maxLines = getMaxLines();
         }else {
-            maxlines = this.maxLine;
+            maxLines = this.maxLine;
         }
         String workText = new StringBuilder(original).toString();
 
-        if (maxlines != -1) {
-            Layout layout = createWorkingLayout(original);
-            if (layout.getLineCount() > maxlines) {
-                workText = original.substring(0, layout.getLineEnd(maxlines - 1)).trim();
-                String showText = original.substring(0, layout.getLineEnd(maxlines - 1)).trim() + "..." + spanClose;
+        if (maxLines != -1) {
+            Layout layout = createWorkingLayout(workText);
+            if (layout.getLineCount() > maxLines) {
+                workText = original.substring(0, layout.getLineEnd(maxLines - 1)).trim();
+                String showText = original.substring(0, layout.getLineEnd(maxLines - 1)).trim() + "..." + spanClose;
                 Layout layout2 = createWorkingLayout(showText);
-                while (layout2.getLineCount() > maxlines) {
+                while (layout2.getLineCount() > maxLines) {
                     int lastSpace = workText.length() - 1;
                     if (lastSpace == -1) {
                         break;
                     }
-                    workText = workText.substring(0, lastSpace).trim();
-                    layout2 = createWorkingLayout(workText + "..." + spanClose);
+                    workText = workText.substring(0, lastSpace);
+                    layout2 = createWorkingLayout(workText + spanClose);
                 }
                 appendShowAll = true;
-                workText = workText + "...";
+                workText = workText + spanClose;
             }
 
         }
@@ -140,7 +140,7 @@ public class ExpandTextView extends AppCompatTextView {
             initExpandEnd(getContext());
         }
         Layout layout1 = createWorkingLayout(text);
-        Layout layout2 = createWorkingLayout(text + "..." + TEXT_CLOSE);
+        Layout layout2 = createWorkingLayout(text + TEXT_CLOSE);
         if (layout2.getLineCount() > layout1.getLineCount()) {
             Layout layout = createWorkingLayout(text + "\n");
             String exchangeTxt = text + "\n";
@@ -168,7 +168,7 @@ public class ExpandTextView extends AppCompatTextView {
                 e.printStackTrace();
             }
         }
-        
+
         append(spanExpand);
         setMovementMethod(LinkMovementMethod.getInstance());
     }
@@ -180,5 +180,6 @@ public class ExpandTextView extends AppCompatTextView {
 
     public void setMaxLine(int maxLine) {
         this.maxLine = maxLine;
+        super.setMaxLines(maxLine);
     }
 }
