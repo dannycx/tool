@@ -19,8 +19,8 @@ import android.view.View;
  */
 
 public class ExpandTextView extends AppCompatTextView {
-    private final String TEXT_EXPAND = " 全文";
-    private final String TEXT_CLOSE = " 展开";
+    private final String TEXT_EXPAND = " 展开";
+    private final String TEXT_CLOSE = " 全文";
 
     private SpannableString spanExpand = null;
     private SpannableString spanClose = null;
@@ -105,7 +105,7 @@ public class ExpandTextView extends AppCompatTextView {
                     layout2 = createWorkingLayout(workText + spanClose);
                 }
                 appendShowAll = true;
-                workText = workText + spanClose;
+                workText = workText + "...";
             }
 
         }
